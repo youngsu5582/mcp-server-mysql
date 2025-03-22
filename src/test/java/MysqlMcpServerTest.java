@@ -1,5 +1,8 @@
 import io.modelcontextprotocol.MockMcpTransport;
+import io.modelcontextprotocol.client.McpClient;
 import io.modelcontextprotocol.server.McpSyncServer;
+import io.modelcontextprotocol.spec.McpSchema;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -49,6 +52,26 @@ public class MysqlMcpServerTest {
         assertThatCode(() -> server.removeResource(MysqlMcpResource.AllTableSyncResourceRegistration()
                 .resource()
                 .uri())).doesNotThrowAnyException();
+    }
+
+    @Test
+    @Disabled("This test throws exception with TimeoutException because of client.initialize not observe anything")
+    @DisplayName("Client–Server integration")
+    void client_server_integration() {
+        final McpSyncServer server = createServer();
+
+        try (final var client = McpClient.sync(new MockMcpTransport())
+                .clientInfo(new McpSchema.Implementation(
+                        server.getServerInfo().name(),
+                        server.getServerInfo().version()))
+                .build()) {
+
+            client.initialize();
+            assertThat(server.getServerInfo().name()).isEqualTo("mysql-mcp-server");
+            assertThatCode(client::closeGracefully).doesNotThrowAnyException();
+        }
+
+        assertThatCode(server::closeGracefully).doesNotThrowAnyException();
     }
 
     /**

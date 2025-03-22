@@ -30,11 +30,10 @@ public class MysqlMcpServer {
                         .prompts(true)
                         .logging()
                         .build())
+                .prompts(MysqlMcpPrompt.HandlePromptRegistration())
+                .tools(MysqlMcpTool.QueryExecuteSyncToolRegistration())
+                .resources(MysqlMcpResource.AllTableSyncResourceRegistration())
                 .build();
-
-        syncServer.addResource(MysqlMcpResource.AllTableSyncResourceRegistration());
-        syncServer.addTool(MysqlMcpTool.QueryExecuteSyncToolRegistration());
-        syncServer.addPrompt(MysqlMcpPrompt.HandlePromptRegistration());
 
         syncServer.loggingNotification(McpSchema.LoggingMessageNotification.builder()
                 .level(McpSchema.LoggingLevel.INFO)
