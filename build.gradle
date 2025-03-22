@@ -26,9 +26,8 @@ repositories {
 }
 
 dependencies {
-    implementation platform("io.modelcontextprotocol.sdk:mcp-bom:0.7.0")
+    implementation platform("io.modelcontextprotocol.sdk:mcp-bom:0.8.0")
 
-    // 2) Core MCP SDK (버전 생략)
     implementation "io.modelcontextprotocol.sdk:mcp"
     implementation "mysql:mysql-connector-java:8.0.33"
     implementation "org.slf4j:slf4j-simple:2.0.7"
@@ -40,4 +39,10 @@ dependencies {
 
 test {
     useJUnitPlatform()
+
+    environment "MYSQL_HOST", "localhost"
+    environment "MYSQL_PORT", "3306"
+    environment "MYSQL_USER", "lotto"
+    environment "MYSQL_PASSWORD", "4321"
+    environment "MYSQL_DATABASE", "lotto"
 }

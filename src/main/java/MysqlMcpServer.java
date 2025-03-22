@@ -1,9 +1,7 @@
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.modelcontextprotocol.server.McpServer;
 import io.modelcontextprotocol.server.McpSyncServer;
-import io.modelcontextprotocol.server.transport.StdioServerTransport;
 import io.modelcontextprotocol.spec.McpSchema;
-import io.modelcontextprotocol.spec.ServerMcpTransport;
+import io.modelcontextprotocol.spec.McpServerTransportProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,7 +11,8 @@ import java.sql.SQLException;
 public class MysqlMcpServer {
     private static final Logger logger = LoggerFactory.getLogger(MysqlMcpServer.class);
 
-    public static McpSyncServer SyncServer(final ServerMcpTransport transport) {
+    public static McpSyncServer SyncServer(final McpServerTransportProvider transport) {
+
         logger.info("Starting MySQL MCP Server...");
         try {
             final DatabaseMetaData metadata = MysqlUtil.getConnectionMetadata();

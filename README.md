@@ -1,7 +1,15 @@
-> This project is a Java conversion of a Python codebase from a [design-computer/mysql_mcp_server](https://github.com/designcomputer/mysql_mcp_server/tree/main).
+> This project is a Java conversion of a Python codebase from
+> a [design-computer/mysql_mcp_server](https://github.com/designcomputer/mysql_mcp_server/tree/main).
+> It preserves the core functionality and logic of the original Python implementation, enabling seamless integration into
+> Java-based environments.
+
 <br>
-It preserves the core functionality and logic of the original Python implementation, enabling seamless integration into Java-based environments.
+
+This project was created as a learning exercise to explore MCP (Model Context Protocol) concepts.
+
 <br>
+
+I welcome suggestions, code contributions, and any help from the community to further improve the project.
 
 # MySQL MCP Server
 

@@ -5,10 +5,10 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class MysqlMcpResource {
-    public static McpServerFeatures.SyncResourceRegistration AllTableSyncResourceRegistration() {
-        return new McpServerFeatures.SyncResourceRegistration(
+    public static McpServerFeatures.SyncResourceSpecification AllTableSyncResourceRegistration() {
+        return new McpServerFeatures.SyncResourceSpecification(
                 new McpSchema.Resource("mysql://{table}/data", "MySQL Table Data", "Contents of a MySQL table", "text/plain", null),
-                request -> {
+                (exchange, request) -> {
                     final String uri = request.uri();
                     final String table = uri.substring("mysql://".length())
                             .split("/")[0];

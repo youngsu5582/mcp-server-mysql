@@ -52,11 +52,11 @@ public class MysqlMcpServerTest {
     }
 
     /**
-     * Use `StdioServerTransport` cause exception(java.lang.RuntimeException: Failed to enqueue message)
+     * Use StdioServerTransport cause exception(java.lang.RuntimeException: Failed to enqueue message)
      * @since 2025.03.22
      * @author youngsu5582
      */
     private McpSyncServer createServer() {
-        return MysqlMcpServer.SyncServer(new MockMcpTransport());
+        return MysqlMcpServer.SyncServer(new MockTransportProvider());
     }
 }

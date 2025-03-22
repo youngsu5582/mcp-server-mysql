@@ -6,9 +6,9 @@ import java.util.List;
 
 
 public class MysqlMcpTool {
-    public static McpServerFeatures.SyncToolRegistration QueryExecuteSyncToolRegistration() {
-        return new McpServerFeatures.SyncToolRegistration(executeSqlTool(),
-                arguments -> {
+    public static McpServerFeatures.SyncToolSpecification QueryExecuteSyncToolRegistration() {
+        return new McpServerFeatures.SyncToolSpecification(executeSqlTool(),
+                (exchange, arguments) -> {
                     try {
                         final String query = (String) arguments.get("query");
 

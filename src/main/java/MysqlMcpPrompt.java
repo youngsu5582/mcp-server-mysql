@@ -10,7 +10,7 @@ import java.util.List;
 public class MysqlMcpPrompt {
     private static final Logger logger = LoggerFactory.getLogger(MysqlMcpPrompt.class);
 
-    public static McpServerFeatures.SyncPromptRegistration HandlePromptRegistration() {
+    public static McpServerFeatures.SyncPromptSpecification HandlePromptRegistration() {
         final Prompt prompt = new Prompt(
                 "mcp-mysql-prompt",
                 "A prompt to seed the database with initial data and demonstrate what you can do with an MySQL MCP Server + Claude",
@@ -19,9 +19,9 @@ public class MysqlMcpPrompt {
                 )
         );
 
-        return new McpServerFeatures.SyncPromptRegistration(
+        return new McpServerFeatures.SyncPromptSpecification(
                 prompt,
-                request -> {
+                (exchange, request) -> {
                     logger.debug("Handling get_prompt request for {} with args {}", prompt.name(), request.arguments());
                     //@formatter:off
                     if (!request.arguments().containsKey("topic")) {
