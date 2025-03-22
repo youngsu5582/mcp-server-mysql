@@ -1,0 +1,43 @@
+plugins {
+    id 'java'
+}
+
+group = 'joyson5582'
+version = '0.0.1'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'Main'
+    }
+    from{
+        configurations.compileClasspath.collect {it.isDirectory() ? it : zipTree(it)}
+    }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation platform("io.modelcontextprotocol.sdk:mcp-bom:0.7.0")
+
+    // 2) Core MCP SDK (버전 생략)
+    implementation "io.modelcontextprotocol.sdk:mcp"
+    implementation "mysql:mysql-connector-java:8.0.33"
+    implementation "org.slf4j:slf4j-simple:2.0.7"
+
+    testImplementation "io.modelcontextprotocol.sdk:mcp-test"
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.3'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.3'
+}
+
+test {
+    useJUnitPlatform()
+}
