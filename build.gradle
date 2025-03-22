@@ -39,10 +39,4 @@ dependencies {
 
 test {
     useJUnitPlatform()
-
-    environment "MYSQL_HOST", "localhost"
-    environment "MYSQL_PORT", "3306"
-    environment "MYSQL_USER", "lotto"
-    environment "MYSQL_PASSWORD", "4321"
-    environment "MYSQL_DATABASE", "lotto"
 }
