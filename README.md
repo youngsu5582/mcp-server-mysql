@@ -11,6 +11,13 @@ This project was created as a learning exercise to explore MCP (Model Context Pr
 
 I welcome suggestions, code contributions, and any help from the community to further improve the project.
 
+<br>
+
+To see the code differences between version 0.7 and version 0.8 of `io.modelcontextprotocol.sdk:mcp-bom`
+<br>
+compare the [previous commit](https://github.com/youngsu5582/mcp-server-mysql/tree/c7f36a3cb684d6d744cc4d9e01fd43501efbca31) and the [corresponding commit](https://github.com/youngsu5582/mcp-server-mysql/tree/388aec339d28f1117cae1302afdc933530cffd0c).
+
+
 # MySQL MCP Server
 
 A Model Context Protocol (MCP) server that enables secure interaction with MySQL databases. This server allows AI
@@ -74,7 +81,7 @@ Add this to your `claude_desktop_config.json`:
 
 ### As a standalone server
 
-![intellij-setup-env.png](intellij-setup-env.png)
+![intellij-setup-env.png](/static/img/intellij-setup-env.png)
 
 - setup your database setting
 - run Main Application
